@@ -1,0 +1,12 @@
+CREATE DATABASE fsd1;
+use fsd1;
+create table Users(user_id INT PRIMARY KEY,full_name VARCHAR(100) NOT NULL,email VARCHAR(100) NOT NULL,city VARCHAR(100) NOT NULL,registration_date DATE NOT NULL,CONSTRAINT uniq UNIQUE (email));
+INSERT INTO Users values(1,'Nishvika Kandela','nishvika0@gmail.com','nizamabad','2026-05-29');
+INSERT INTO Users values(2,'Pallavi Nuthikattu','pallavi0@gmail.com','hyderabad','2026-05-25'),(3,'Sanjana Vemula','sanjana0@gmail.com','karimnagar','2026-04-10'),(4,'Abhishek Sharma','abhi0@gmail.com','punjab','2026-01-01'),(5,'Shubman gill','subh0@gmail.com','punjab','2025-03-26');
+select * from Users;
+desc Users;
+create table Events(event_id INT PRIMARY KEY,title VARCHAR(200) NOT NULL,description TEXT,city VARCHAR(100) NOT NULL,start_date DATETIME NOT NULL,end_date DATETIME NOT NULL,status ENUM('upcoming','completed','cancelled'),organizer_id INT , CONSTRAINT FK FOREIGN KEY(organizer_id)  REFERENCES Users(user_id));
+desc Events;
+insert into Events values(101,'marriage event','this is a marriage event','hyderabad','2026-05-25','2026-05-30','upcoming',2);
+insert into Events values(102,'mehendi event','this is a mehendi event','karimnagar','2026-05-13','2026-05-17','completed',1),(103,'selection event','this is a selection event','rangareddy','2026-02-23','2026-02-21','cancelled',5),(104,'special event','this is a special event','yadadri','2026-03-02','2026-03-02','upcoming',4),(105,'birthday event','this is a birthday event','nirmal','2025-08-14','2025-08-14','completed',1),(106,'opening event','this is a opening event','nizamabad','2026-07-15','2026-07-18','cancelled',3);
+select * from Events;
